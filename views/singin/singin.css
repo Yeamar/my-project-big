@@ -83,8 +83,8 @@ color: rgb(15, 74, 74);
   font-size: 139%;
 }
 .btn_singin:hover{
-  color:rgb(206, 240, 234);
-  box-shadow: 0cm 0cm 0.1cm 0.1cm rgb(204, 187, 153);
+  color:rgb(18, 36, 33);
+  box-shadow: 0cm 0cm 0.1cm 0.1cm rgb(15, 74, 74);
 }
 #singin_b{
  width: 100%;

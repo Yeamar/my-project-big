@@ -2,10 +2,35 @@ const Btn_Singin = document.querySelector('.nav_btn_singin');
 const Form_Singin = document.querySelector('.conteiner_form_Singin');
 const Form_singin_data = document.querySelector('.form_singin');
 const x_singin = document.getElementById("xs");
+const check_user = function(data){
 
 
+    if (data.email === "" || data.password === "" || data.name === "") {
+        alert("מלא את כל השדות");
+        return false;
+    }
+
+    if (data.password.includes(" ")) {
+        alert("אין אפשרות להזין רווחים בסיסמה");
+        return false;
+    }
+    if (data.password.length < 6) {
+        alert("סיסמא קצרה מדי");
+        return false;
+    } if (data.password.length > 20) {
+        alert("סיסמא ארוכה מדי");
+        return false;
+    } if (data.name.length < 3) {
+        alert("שם קצר מדי");
+        return false;
+    } if (data.name.length > 50) {
+        alert("שם ארוך מדי");
+        return false;
+    }
+    return true;
 
 
+}
 
 function close_singin() {
     x_singin.addEventListener('click', function () {
@@ -31,12 +56,17 @@ Form_singin_data.addEventListener('submit', (e) => {
         data[key] = value;
 
         const DatJSON = JSON.stringify(data);
-    }
-        
 
-    if(data.password === "" || data.email === "" || data.name === "" ){
-        alert("Please enter")
-    }else {
+
+    }
+    console.log(data);
+
+   
+ 
+    if (check_user(data) === false) {
+    return false
+  }
+    else {
 
         fetch('http://localhost:3121/singin', {
             method: 'POST',
@@ -51,22 +81,15 @@ Form_singin_data.addEventListener('submit', (e) => {
             .then((res) => {
                 console.log(res);
 
-            }
-            )
-
-            
-
-                window.location = 'http://localhost:3121/'
 
 
-            
-
-    }
-
-           
-    
+            })     }
 
 
+
+
+
+        window.location= "http://localhost:3121/";
 
 
 

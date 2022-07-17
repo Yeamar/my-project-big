@@ -1,7 +1,6 @@
 const express = require('express');
-const { Http2ServerResponse } = require('http2');
 const app = express();
-
+const cookieParser = require('cookie-parser')
 const path = require('path');
 const viewsPath = path.join(__dirname + '/../views');
 const HomeRouter = require('../routes/Home.router');
@@ -18,7 +17,7 @@ app.use((req, res, next) => {
 })
 
 app.use(express.json());
-
+app.use(cookieParser())
 
 app.use('/singin',SinginRouter)
 app.use("/login", LoginRouter);
@@ -29,6 +28,4 @@ app.use('/', HomeRouter);
 app.listen(3121, () => {
     console.log('server is running on port 3121');
 }
-     
 );
- 

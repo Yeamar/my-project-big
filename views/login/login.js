@@ -30,8 +30,6 @@ function close_login() {
 }
 close_login();
 
-function Data_Login() {
-
     Form_login_data.addEventListener('submit', (e) => {
         e.preventDefault();
         const data = {}
@@ -40,24 +38,31 @@ function Data_Login() {
         for (const [key, value] of Data_login.entries()) {
             data[key] = value;
             const DatJSON = JSON.stringify(data);
-            console.log(DatJSON);
 
+            console.log(DatJSON);
+       
+        
         }
 
+    //     const remember = data.remember
+    // if (remember) {
+        
+    //    window.localStorage.setItem("data", data.email)
 
-        //   fetch('http://localhost:3000/login', {
-        //     method: 'POST',
-        //     body: DatJSON,
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(res => res.json())
-        // .then(data => {
-        //     console.log(data);
-        // }
-        // )
 
+    // }
+
+          fetch('http://localhost:3121/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        
+       
+    
     }
     );
-}
-Data_Login();
+
+
